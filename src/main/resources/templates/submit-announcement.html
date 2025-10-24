@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Announcement</title>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar" style="
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: #3498db;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+">
+    <a href="/" class="logo" style="
+        display: inline-block;
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid white;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    ">
+        <img th:src="@{/images/logo.png}" alt="Community Logo" style="width: 100%; height: 100%; object-fit: cover;" />
+    </a>
+    <ul style="display: flex; list-style: none; gap: 2rem; margin:0;">
+        <li><a th:href="@{/announcements}" style="color:white; text-decoration:none; font-weight:500;">News</a></li>
+        <li><a th:href="@{/events}" style="color:white; text-decoration:none; font-weight:500;">Events</a></li>
+        <li><a th:href="@{/gallery}" style="color:white; text-decoration:none; font-weight:500;">Gallery</a></li>
+    </ul>
+    <a th:href="@{/submit-announcement}" style="
+        background-color: #2980b9;
+        color: white;
+        padding: 0.7rem 1.5rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+    ">
+        Submit Announcement
+    </a>
+</nav>
+
+<!-- Main Content -->
+<div style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 2rem 1rem;
+">
+    <div class="card form-card" style="
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        max-width: 600px;
+        width: 100%;
+        padding: 2rem;
+    ">
+
+        <!-- ✅ SUCCESS MESSAGE (shown only after successful submission) -->
+        <div th:if="${successMessage}" id="successMessage" style="
+            background-color: #2ecc71;
+            color: white;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 600;
+        ">
+            <span th:text="${successMessage}"></span>
+        </div>
+
+        <!-- ✅ FORM (only shown if NO success message) -->
+        <div th:unless="${successMessage}">
+            <form th:action="@{/submit-announcement}"
+                  th:object="${announcement}"
+                  method="post"
+                  enctype="multipart/form-data"
+                  style="display:flex; flex-direction:column; gap:1rem;">
+
+                <!-- Name -->
+                <div>
+                    <label for="submittedBy" style="display:block; margin-bottom: 0.5rem; font-weight:600;">Your Name</label>
+                    <input type="text" id="submittedBy" name="submittedBy" required placeholder="Enter your name" style="
+                        width: 100%;
+                        padding: 0.6rem;
+                        border-radius: 6px;
+                        border: 1px solid #ccc;
+                        font-size: 1rem;
+                        outline: none;
+                    "/>
+                </div>
+
+                <!-- Title -->
+                <div>
+                    <label for="title" style="display:block; margin-bottom: 0.5rem; font-weight:600;">Title</label>
+                    <input type="text" id="title" name="title" required placeholder="Enter announcement title" style="
+                        width: 100%;
+                        padding: 0.6rem;
+                        border-radius: 6px;
+                        border: 1px solid #ccc;
+                        font-size: 1rem;
+                        outline: none;
+                    "/>
+                </div>
+
+                <!-- Category -->
+                <div>
+                    <label for="category" style="display:block; margin-bottom: 0.5rem; font-weight:600;">Category</label>
+                    <select id="category" name="category" required style="
+                        width: 100%;
+                        padding: 0.6rem;
+                        border-radius: 6px;
+                        border: 1px solid #ccc;
+                        font-size: 1rem;
+                        outline: none;
+                    ">
+                        <option value="">-- Select Category --</option>
+                        <option value="General">General</option>
+                        <option value="Maintenance">Maintenance</option>
+                        <option value="Event">Event</option>
+                        <option value="Safety">Safety</option>
+                        <option value="Community">Community</option>
+                    </select>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label for="description" style="display:block; margin-bottom: 0.5rem; font-weight:600;">Description</label>
+                    <textarea id="description" name="description" required placeholder="Describe your announcement..." style="
+                        width: 100%;
+                        padding: 0.6rem;
+                        border-radius: 6px;
+                        border: 1px solid #ccc;
+                        font-size: 1rem;
+                        min-height: 120px;
+                        resize: vertical;
+                        outline: none;
+                    "></textarea>
+                </div>
+
+                <!-- Image Upload -->
+                <div>
+                    <label for="image" style="display:block; margin-bottom: 0.5rem; font-weight:600;">Upload Image</label>
+                    <input type="file" id="image" name="image" accept="image/*" style="display: block; width:100%; padding:0.3rem;"/>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" style="
+                    background-color: #3498db;
+                    color: white;
+                    padding: 0.8rem 2rem;
+                    border-radius: 8px;
+                    border: none;
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                    cursor: pointer;
+                ">
+                    Submit Announcement
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer style="
+    background-color: white;
+    color: #2c3e50;
+    padding: 60px 20px 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95rem;
+    border-top: 1px solid #ecf0f1;
+    margin-top: auto;
+">
+    <div style="
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 40px;
+        text-align: left;
+    ">
+        <div style="flex: 1 1 300px;">
+            <img th:src="@{/images/logo.png}" alt="Mapetla Logo"
+                 style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #3498db; margin-bottom: 15px;" />
+            <p style="line-height: 1.6; color: #34495e;">
+                Mapetla is more than a place — it’s a united community rooted in heritage, resilience, and shared purpose.
+            </p>
+        </div>
+        <!-- Other footer sections omitted for brevity but keep them -->
+    </div>
+    <div style="text-align: center; margin-top: 40px; border-top: 1px solid #ecf0f1; padding-top: 20px; font-size: 0.85rem; color: #7f8c8d;">
+        <p>&copy; 2025 Community Portal. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- ✅ Auto-redirect after 4 seconds IF success message is present -->
+<script th:if="${successMessage}">
+    setTimeout(function() {
+        window.location.href = '/announcements';
+    }, 4000);
+</script>
+
+</body>
+</html>

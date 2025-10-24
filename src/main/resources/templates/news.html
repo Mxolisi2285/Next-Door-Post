@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community News</title>
+    <link rel="stylesheet" th:href="@{/css/events.css}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <a th:href="@{/}" class="logo" style="display:block; width:68px; height:68px; border-radius:50%; overflow:hidden; border:2px solid white; box-shadow:0 2px 6px rgba(0,0,0,0.15);">
+        <img th:src="@{/images/logo.png}" alt="Community Logo" style="width:100%; height:100%; object-fit:cover;" />
+    </a>
+    <ul>
+        <li><a th:href="@{/news}" class="active">News</a></li>
+        <li><a th:href="@{/events}">Events</a></li>
+        <li><a th:href="@{/gallery}">Gallery</a></li>
+    </ul>
+    <a th:href="@{/submit-announcement}" class="btn">Submit Announcement</a>
+</nav>
+
+<!-- Header -->
+<header style="text-align:center; padding:2rem 1rem; background-color:#3498db; color:white;">
+    <h1>Latest Community News</h1>
+    <p>Stay updated with the most recent news from around the world and your community.</p>
+</header>
+
+<!-- News Section -->
+<main style="max-width:1200px; margin:2rem auto; padding:0 1rem; display:grid; gap:2rem; grid-template-columns:repeat(auto-fill, minmax(350px,1fr));">
+
+    <!-- Display News Articles -->
+    <div th:each="news : ${newsArticles}" style="background:white; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.08); transition: transform 0.3s;"
+         onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+        <div style="height:200px; overflow:hidden;">
+            <img th:src="${news.imageUrl != null} ? @{${news.imageUrl}} : @{/img/news-placeholder.jpg}"
+                 alt="News Image" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+        </div>
+        <div style="padding:1.5rem;">
+            <h2 th:text="${news.title}" style="margin-top:0; color:#2c3e50;">News Title</h2>
+            <p style="margin:0.5rem 0;"><strong>Published:</strong> <span th:text="${news.publishedAt}">2025-10-24</span></p>
+            <p th:text="${news.description}" style="color:#555; line-height:1.5;">News description...</p>
+            <a th:href="${news.url}" target="_blank" style="display:inline-block; margin-top:1rem; color:#3498db; text-decoration:none; font-weight:600;">Read More</a>
+        </div>
+    </div>
+
+    <!-- No News Message -->
+    <div th:if="${newsArticles.empty}" style="grid-column:1 / -1; text-align:center; padding:3rem; color:#7f8c8d;">
+        <p>No news available at the moment. Check back later!</p>
+    </div>
+
+</main>
+
+<!-- Footer -->
+<footer style="background-color: white; color: #2c3e50; padding: 60px 20px 30px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 0.95rem; border-top: 1px solid #ecf0f1; margin-top: auto;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; text-align: left;">
+
+        <!-- Section 1: Logo + Description -->
+        <div style="flex: 1 1 300px;">
+            <img th:src="@{/images/logo.png}" alt="Mapetla Logo" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #3498db; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 15px;" />
+            <p style="line-height: 1.6; color: #34495e;">
+                Looking for a place to stay informed and connected? At Community Portal, we are committed to helping neighbors share announcements, discover events, and build stronger communities together.
+            </p>
+        </div>
+
+        <!-- Section 2: Navigation Links -->
+        <div style="flex: 1 1 300px;">
+            <h4 style="font-size: 1.1rem; color: #3498db; margin-bottom: 10px; font-weight: 600;">Quick Links</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 10px;"><a th:href="@{/about}" style="text-decoration: none; color: #2c3e50; font-weight: 500;">About Us</a></li>
+                <li style="margin-bottom: 10px;"><a th:href="@{/announcements}" style="text-decoration: none; color: #2c3e50; font-weight: 500;">Announcements</a></li>
+                <li style="margin-bottom: 10px;"><a th:href="@{/events}" style="text-decoration: none; color: #2c3e50; font-weight: 500;">Events</a></li>
+                <li style="margin-bottom: 10px;"><a th:href="@{/gallery}" style="text-decoration: none; color: #2c3e50; font-weight: 500;">Gallery</a></li>
+            </ul>
+        </div>
+
+        <!-- Section 3: Contact + Social -->
+        <div style="flex: 1 1 300px;">
+            <h4 style="font-size: 1.1rem; color: #3498db; margin-bottom: 10px; font-weight: 600;">Contact Us</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px;"><i class="fas fa-map-marker-alt" style="color: #3498db;"></i> Isiphephelo Multi-purpose Center, Ext 21 Soweto</li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px;"><i class="fas fa-clock" style="color: #3498db;"></i> Office Hours: 9:00 AM – 4:00 PM</li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px;"><i class="fas fa-envelope" style="color: #3498db;"></i> info@communityportal.org</li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px;"><i class="fas fa-phone" style="color: #3498db;"></i> 012 8486 985</li>
+            </ul>
+
+            <!-- Social Icons -->
+            <div style="margin-top: 15px;">
+                <a href="#" style="margin-right: 12px; font-size: 1.2rem; color: #3498db;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" style="margin-right: 12px; font-size: 1.2rem; color: #3498db;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="margin-right: 12px; font-size: 1.2rem; color: #3498db;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="margin-right: 12px; font-size: 1.2rem; color: #3498db;"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div style="text-align:center; margin-top:40px; border-top:1px solid #ecf0f1; padding-top:20px; font-size:0.85rem; color:#7f8c8d;">
+        <p>&copy; 2025 Community Portal. All rights reserved.</p>
+    </div>
+
+    <!-- Admin Login Icon -->
+    <div style="text-align:center; margin-top:12px;">
+        <a th:href="@{/login}" title="Admin Login">
+            <img th:src="@{/images/admin.png}" alt="Admin Login" style="height:20px; opacity:0.8; transition: opacity 0.3s;" />
+        </a>
+    </div>
+</footer>
+
+</body>
+</html>

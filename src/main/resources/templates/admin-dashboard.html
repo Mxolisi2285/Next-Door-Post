@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Community Portal</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+<main class="main">
+    <div class="header">
+        <h1>Welcome, Admin</h1>
+        <button type="button" th:onclick="|window.location.href='@{/admin/update-profile}'|"
+                class="btn-primary">
+            <i class="fas fa-user-cog"></i> Update Profile
+        </button>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Total Announcements</h3>
+            <p th:text="${totalAnnouncements}">0</p>
+        </div>
+        <div class="card">
+            <h3>Total Events</h3>
+            <p th:text="${totalEvents}">0</p>
+        </div>
+        <div class="card">
+            <h3>Pending Approvals</h3>
+            <p th:text="${pendingApprovals}">0</p>
+        </div>
+    </div>
+
+    <!-- Announcements Table -->
+    <section class="admin-list">
+        <h2>Submitted Announcements</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Submitted By</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="announcement : ${announcements}">
+                <td>
+                    <img th:if="${announcement.imagePath != null}"
+                         th:src="@{${announcement.imagePath}}"
+                         alt="Announcement Image" style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
+                </td>
+                <td th:text="${announcement.title}">Title</td>
+                <td th:text="${announcement.submittedBy}">Submitted By</td>
+                <td th:text="${announcement.date}">Date</td>
+                <td th:text="${announcement.approved} ? 'Approved' : 'Pending'">Pending</td>
+                <td>
+                    <a class="btn-primary" th:href="@{/admin/approve-announcement/{id}(id=${announcement.id})}" th:if="${!announcement.approved}">Approve</a>
+                    <span th:if="${announcement.approved}" style="color:green; font-weight:bold;">Approved</span>
+                    <a class="delete-btn" th:href="@{/admin/delete-announcement/{id}(id=${announcement.id})}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Events Table -->
+    <section class="admin-list">
+        <h2>Submitted Events</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Image</th>
+                <th>Event Name</th>
+                <th>Organizer</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="event : ${events}">
+                <td>
+                    <img th:if="${event.imagePath != null}"
+                         th:src="@{${event.imagePath}}"
+                         alt="Event Image" style="width: 60px; height: 60px; object-fit: cover; border-radius: 5px;">
+                </td>
+                <td th:text="${event.title}">Event Name</td>
+                <td th:text="${event.submittedBy}">Organizer</td>
+                <td th:text="${event.date}">Date</td>
+                <td th:text="${event.approved} ? 'Approved' : 'Pending'">Pending</td>
+                <td>
+                    <a class="btn-primary" th:href="@{/admin/approve-event/{id}(id=${event.id})}" th:if="${!event.approved}">Approve</a>
+                    <span th:if="${event.approved}" style="color:green; font-weight:bold;">Approved</span>
+                    <a class="delete-btn" th:href="@{/admin/delete-event/{id}(id=${event.id})}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <button type="button" th:onclick="|window.location.href='@{/logout}'|"
+                style="background-color: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+    </div>
+</main>
+</body>
+</html>

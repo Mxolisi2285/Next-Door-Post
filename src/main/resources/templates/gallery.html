@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Community Gallery</title>
+    <link rel="stylesheet" th:href="@{/css/gallery.css}"> <!-- Keep using main style -->
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="/" class="logo" style="
+    display: block;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+">
+        <img th:src="@{/images/logo.png}"
+             alt="Community Logo"
+             style="
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+         " />
+    </a>
+    <ul>
+        <li><a th:href="@{/announcements}">News</a></li>
+        <li><a th:href="@{/events}">Events</a></li>
+        <li><a th:href="@{/gallery}" class="active">Gallery</a></li>
+    </ul>
+    <a th:href="@{/submit-announcement}" class="btn">Submit Announcement</a>
+</nav>
+
+<!-- Gallery Section -->
+<section class="gallery">
+    <h2>Community Gallery</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img th:src="@{/img/community1.jpg}" alt="Neighborhood Watch Meeting">
+            <div class="caption">Neighborhood Watch Meeting • April 15, 2024</div>
+        </div>
+        <div class="gallery-item">
+            <img th:src="@{/img/community2.jpg}" alt="Community Clean-Up Drive">
+            <div class="caption">Clean-Up Drive • April 20, 2024</div>
+        </div>
+        <div class="gallery-item">
+            <img th:src="@{/img/community3.jpg}" alt="Local Sports League">
+            <div class="caption">Local Sports League • April 8, 2024</div>
+        </div>
+        <div class="gallery-item">
+            <img th:src="@{/img/community4.jpg}" alt="Annual Food Fair">
+            <div class="caption">Annual Food Fair • May 5, 2024</div>
+        </div>
+    </div>
+</section>
+
+<!-- ✅ Footer -->
+<footer style="
+    background-color: white;
+    color: #2c3e50;
+    padding: 60px 20px 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95rem;
+    border-top: 1px solid #ecf0f1;
+">
+    <div style="
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 40px;
+        text-align: left;
+    ">
+
+        <!-- Section 1: Logo / Title + Description -->
+        <div style="flex: 1 1 300px;">
+            <img th:src="@{/images/logo.png}" alt="Mapetla Logo"
+                 style="
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 2px solid #3498db;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+                    margin-bottom: 15px;
+                 " />
+            <p style="line-height: 1.6; color: #34495e;">
+                Looking for a place to stay informed and connected? At Community Portal, we are committed to helping neighbors share announcements, discover events, and build stronger communities together.
+            </p>
+        </div>
+
+        <!-- Section 2: Navigation Links -->
+        <div style="flex: 1 1 300px;">
+            <h4 style="font-size: 1.1rem; color: #3498db; margin-bottom: 10px; font-weight: 600;">Quick Links</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 10px;">
+                    <a th:href="@{/about}" style="text-decoration: none; color: #2c3e50; transition: color 0.3s; font-weight: 500;"
+                       onmouseover="this.style.color='#3498db'"
+                       onmouseout="this.style.color='#2c3e50'">
+                        About Us
+                    </a>
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <a th:href="@{/announcements}" style="text-decoration: none; color: #2c3e50; transition: color 0.3s; font-weight: 500;"
+                       onmouseover="this.style.color='#3498db'"
+                       onmouseout="this.style.color='#2c3e50'">
+                        Announcements
+                    </a>
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <a th:href="@{/events}" style="text-decoration: none; color: #2c3e50; transition: color 0.3s; font-weight: 500;"
+                       onmouseover="this.style.color='#3498db'"
+                       onmouseout="this.style.color='#2c3e50'">
+                        Events
+                    </a>
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <a th:href="@{/gallery}" style="text-decoration: none; color: #2c3e50; transition: color 0.3s; font-weight: 500;"
+                       onmouseover="this.style.color='#3498db'"
+                       onmouseout="this.style.color='#2c3e50'">
+                        Gallery
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section 3: Contact + Social -->
+        <div style="flex: 1 1 300px;">
+            <h4 style="font-size: 1.1rem; color: #3498db; margin-bottom: 10px; font-weight: 600;">Contact Us</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
+                    <i class="fas fa-map-marker-alt" style="color: #3498db; margin-top: 4px;"></i>
+                    Isiphephelo Multi-purpose Center, Ext 21 Soweto
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
+                    <i class="fas fa-clock" style="color: #3498db; margin-top: 4px;"></i>
+                    Office Hours: 9:00 AM – 4:00 PM
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
+                    <i class="fas fa-envelope" style="color: #3498db; margin-top: 4px;"></i>
+                    info@communityportal.org
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
+                    <i class="fas fa-phone" style="color: #3498db; margin-top: 4px;"></i>
+                    012 8486 985
+                </li>
+            </ul>
+
+            <!-- Social Icons -->
+            <div style="margin-top: 15px;">
+                <a href="#" style="margin-right: 12px; font-size: 1.2rem; color: #3498db; text-decoration: none; transition: color 0.3s, transform 0.2s;"
+                   onmouseover="this.style.color='#2980b9'; this.style.transform='translateY(-2px)';"
+                   onmouseout="this.style.color='#3498db'; this.style.transform='translateY(0)';">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" style="margin-right: 12px; font-size: 1.2rem; color: #3498db; text-decoration: none; transition: color 0.3s, transform 0.2s;"
+                   onmouseover="this.style.color='#2980b9'; this.style.transform='translateY(-2px)';"
+                   onmouseout="this.style.color='#3498db'; this.style.transform='translateY(0)';">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" style="margin-right: 12px; font-size: 1.2rem; color: #3498db; text-decoration: none; transition: color 0.3s, transform 0.2s;"
+                   onmouseover="this.style.color='#2980b9'; this.style.transform='translateY(-2px)';"
+                   onmouseout="this.style.color='#3498db'; this.style.transform='translateY(0)';">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" style="margin-right: 12px; font-size: 1.2rem; color: #3498db; text-decoration: none; transition: color 0.3s, transform 0.2s;"
+                   onmouseover="this.style.color='#2980b9'; this.style.transform='translateY(-2px)';"
+                   onmouseout="this.style.color='#3498db'; this.style.transform='translateY(0)';">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div style="
+        text-align: center;
+        margin-top: 40px;
+        border-top: 1px solid #ecf0f1;
+        padding-top: 20px;
+        font-size: 0.85rem;
+        color: #7f8c8d;
+    ">
+        <p>&copy; 2025 Community Portal. All rights reserved.</p>
+    </div>
+
+    <!-- Admin Login Icon -->
+    <div style="text-align: center; margin-top: 12px;">
+        <a th:href="@{/login}" title="Admin Login">
+            <img th:src="@{/images/admin.png}" alt="Admin Login"
+                 style="height: 20px; opacity: 0.8; transition: opacity 0.3s;"
+                 onmouseover="this.style.opacity='1'"
+                 onmouseout="this.style.opacity='0.8'" />
+        </a>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Mapetla</title>
+    <link rel="stylesheet" th:href="@{/css/about.css}">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="/" class="logo" style="
+    display: block;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+">
+        <img th:src="@{/images/logo.png}"
+             alt="Community Logo"
+             style="
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+         " />
+    </a>
+    <ul>
+        <li><a th:href="@{/announcements}">Announcements</a></li>
+        <li><a th:href="@{/events}">Events</a></li>
+        <li><a th:href="@{/gallery}">Gallery</a></li>
+    </ul>
+    <a th:href="@{/submit-announcement}" class="btn">Submit Announcement</a>
+</nav>
+
+<!-- About Section -->
+<section class="about-full">
+    <div class="about-content">
+        <h2>About Mapetla</h2>
+        <p class="intro">
+            Welcome to Mapetla, a proud and thriving community in the heart of Soweto, Johannesburg.
+        </p>
+        <p>
+            Rooted in a rich history and shaped by the resilience of its people, Mapetla is more than just a location — it's a living, breathing community where heritage, culture, and progress come together. From the echoes of the liberation struggle to the energy of today’s youth, Mapetla reflects the true spirit of <em>ubuntu</em>: unity, compassion, and collective strength.
+        </p>
+        <p>
+            Our community is home to vibrant families, local businesses, schools, churches, and creative minds who are passionate about building a better future. Through community-led initiatives, youth empowerment programs, and a deep commitment to upliftment, Mapetla continues to grow while staying true to its roots.
+        </p>
+        <p>
+            Whether you're a visitor, a former resident, or someone looking to connect with the heartbeat of Soweto — Mapetla welcomes you.
+        </p>
+        <p class="highlight">
+            This is our home. This is our story.
+        </p>
+    </div>
+</section>
+
+<!-- Our Team Section -->
+<section class="team">
+    <h2>Meet Our Team</h2>
+    <p class="team-intro">Dedicated individuals driving the vision of Mapetla Forward</p>
+
+    <div class="team-grid">
+        <!-- Team Member 1 -->
+        <div class="team-member">
+            <img th:src="@{/img/team/member1.jpg}" alt="Thandi Nkosi">
+            <h3>Thandi Nkosi</h3>
+            <p class="position">Community Coordinator</p>
+            <p class="contact"><strong>Email:</strong> thandi.nkosi@mapetla.org</p>
+            <p class="contact"><strong>Phone:</strong> +27 11 123 4567</p>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="team-member">
+            <img th:src="@{/img/team/member2.jpg}" alt="Sipho Dlamini">
+            <h3>Sipho Dlamini</h3>
+            <p class="position">Youth Programs Lead</p>
+            <p class="contact"><strong>Email:</strong> sipho.d@mapetla.org</p>
+            <p class="contact"><strong>Phone:</strong> +27 11 234 5678</p>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="team-member">
+            <img th:src="@{/img/team/member3.jpg}" alt="Lerato Mokoena">
+            <h3>Lerato Mokoena</h3>
+            <p class="position">Events & Outreach Manager</p>
+            <p class="contact"><strong>Email:</strong> lerato.m@mapetla.org</p>
+            <p class="contact"><strong>Phone:</strong> +27 11 345 6789</p>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="team-member">
+            <img th:src="@{/img/team/member4.jpg}" alt="David van Wyk">
+            <h3>David van Wyk</h3>
+            <p class="position">Tech & Communications</p>
+            <p class="contact"><strong>Email:</strong> david.vw@mapetla.org</p>
+            <p class="contact"><strong>Phone:</strong> +27 11 456 7890</p>
+        </div>
+
+        <!-- Team Member 5 -->
+        <div class="team-member">
+            <img th:src="@{/img/team/member4.jpg}" alt="David van Wyk">
+            <h3>David van Wyk</h3>
+            <p class="position">Tech & Communications</p>
+            <p class="contact"><strong>Email:</strong> david.vw@mapetla.org</p>
+            <p class="contact"><strong>Phone:</strong> +27 11 456 7890</p>
+        </div>
+        <!-- Team Member 6 -->
+        <div class="team-member">
+            <img th:src="@{/img/team/member4.jpg}" alt="David van Wyk">
+            <h3>David van Wyk</h3>
+            <p class="position">Tech & Communications</p>
+            <p class="contact"><strong>Email:</strong> david.vw@mapetla.org</p>
+            <p class="contact"><strong>Phone:</strong> +27 11 456 7890</p>
+        </div>
+    </div>
+</section>
+
+<section class="mission-vision">
+    <div class="mv-item">
+        <h3>Our Mission</h3>
+        <p>To empower Mapetla residents through inclusive programs, sustainable development, and youth-driven innovation.</p>
+    </div>
+    <div class="mv-item">
+        <h3>Our Vision</h3>
+        <p>A thriving, self-reliant Mapetla where every voice matters and every future shines.</p>
+    </div>
+</section>
+
+<section class="impact">
+    <h3>Our Impact in 2024</h3>
+    <div class="stats">
+        <div class="stat-box">
+            <span class="number">12+</span>
+            <p>Community Programs</p>
+        </div>
+        <div class="stat-box">
+            <span class="number">500+</span>
+            <p>Residents Engaged</p>
+        </div>
+        <div class="stat-box">
+            <span class="number">24</span>
+            <p>Youth Trained</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer style="
+    background-color: white;
+    color: #2c3e50;
+    padding: 60px 20px 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95rem;
+    border-top: 1px solid #ecf0f1;
+">
+    <div style="
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 40px;
+        text-align: left;
+    ">
+
+        <!-- Section 1: Logo / Title + Description -->
+        <div style="flex: 1 1 300px;">
+            <img th:src="@{/images/logo.png}" alt="Mapetla Logo"
+                 style="
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 2px solid #3498db;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+                    margin-bottom: 15px;
+                 " />
+            <p style="line-height: 1.6; color: #34495e;">
+                Looking for a place to stay informed and connected? At Community Portal, we are committed to helping neighbors share announcements, discover events, and build stronger communities together.
+            </p>
+        </div>
+
+        <!-- Section 2: Navigation Links -->
+        <div style="flex: 1 1 300px;">
+            <h4 style="font-size: 1.1rem; color: #3498db; margin-bottom: 10px; font-weight: 600;">Quick Links</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 10px;">
+                    <a th:href="@{/about}" style="text-decoration: none; color: #2c3e50; transition: color 0.3s; font-weight: 500;"
+                       onmouseover="this.style.color='#3498db'"
+                       onmouseout="this.style.color='#2c3e50'">
+                        About Us
+                    </a>
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <a th:href="@{/announcements}" style="text-decoration: none; color: #2c3e50; transition: color 0.3s; font-weight: 500;"
+                       onmouseover="this.style.color='#3498db'"
+                       onmouseout="this.style.color='#2c3e50'">
+                        Announcements
+                    </a>
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <a th:href="@{/events}" style="text-decoration: none; color: #2c3e50; transition: color 0.3s; font-weight: 500;"
+                       onmouseover="this.style.color='#3498db'"
+                       onmouseout="this.style.color='#2c3e50'">
+                        Events
+                    </a>
+                </li>
+                <li style="margin-bottom: 10px;">
+                    <a th:href="@{/gallery}" style="text-decoration: none; color: #2c3e50; transition: color 0.3s; font-weight: 500;"
+                       onmouseover="this.style.color='#3498db'"
+                       onmouseout="this.style.color='#2c3e50'">
+                        Gallery
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section 3: Contact + Social -->
+        <div style="flex: 1 1 300px;">
+            <h4 style="font-size: 1.1rem; color: #3498db; margin-bottom: 10px; font-weight: 600;">Contact Us</h4>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
+                    <i class="fas fa-map-marker-alt" style="color: #3498db; margin-top: 4px;"></i>
+                    Isiphephelo Multi-purpose Center, Ext 21 Soweto
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
+                    <i class="fas fa-clock" style="color: #3498db; margin-top: 4px;"></i>
+                    Office Hours: 9:00 AM – 4:00 PM
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
+                    <i class="fas fa-envelope" style="color: #3498db; margin-top: 4px;"></i>
+                    info@communityportal.org
+                </li>
+                <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5;">
+                    <i class="fas fa-phone" style="color: #3498db; margin-top: 4px;"></i>
+                    012 8486 985
+                </li>
+            </ul>
+
+            <!-- Social Icons -->
+            <div style="margin-top: 15px;">
+                <a href="#" style="margin-right: 12px; font-size: 1.2rem; color: #3498db; text-decoration: none; transition: color 0.3s, transform 0.2s;"
+                   onmouseover="this.style.color='#2980b9'; this.style.transform='translateY(-2px)';"
+                   onmouseout="this.style.color='#3498db'; this.style.transform='translateY(0)';">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" style="margin-right: 12px; font-size: 1.2rem; color: #3498db; text-decoration: none; transition: color 0.3s, transform 0.2s;"
+                   onmouseover="this.style.color='#2980b9'; this.style.transform='translateY(-2px)';"
+                   onmouseout="this.style.color='#3498db'; this.style.transform='translateY(0)';">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" style="margin-right: 12px; font-size: 1.2rem; color: #3498db; text-decoration: none; transition: color 0.3s, transform 0.2s;"
+                   onmouseover="this.style.color='#2980b9'; this.style.transform='translateY(-2px)';"
+                   onmouseout="this.style.color='#3498db'; this.style.transform='translateY(0)';">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" style="margin-right: 12px; font-size: 1.2rem; color: #3498db; text-decoration: none; transition: color 0.3s, transform 0.2s;"
+                   onmouseover="this.style.color='#2980b9'; this.style.transform='translateY(-2px)';"
+                   onmouseout="this.style.color='#3498db'; this.style.transform='translateY(0)';">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div style="
+        text-align: center;
+        margin-top: 40px;
+        border-top: 1px solid #ecf0f1;
+        padding-top: 20px;
+        font-size: 0.85rem;
+        color: #7f8c8d;
+    ">
+        <p>&copy; 2025 Community Portal. All rights reserved.</p>
+    </div>
+
+    <!-- Admin Login Icon -->
+    <div style="text-align: center; margin-top: 12px;">
+        <a th:href="@{/login}" title="Admin Login">
+            <img th:src="@{/images/admin.png}" alt="Admin Login"
+                 style="height: 20px; opacity: 0.8; transition: opacity 0.3s;"
+                 onmouseover="this.style.opacity='1'"
+                 onmouseout="this.style.opacity='0.8'" />
+        </a>
+    </div>
+</footer>
+
+</body>
+</html>

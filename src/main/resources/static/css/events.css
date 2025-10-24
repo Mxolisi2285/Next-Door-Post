@@ -1,0 +1,341 @@
+/* === RESET & BASE STYLES === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background-color: #f8f9fa;
+}
+
+/* === NAVBAR === */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: #3498db;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white; /* or whatever color matches your navbar */
+    text-decoration: none; /* removes underline */
+    display: inline-block; /* ensures padding/margin works */
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+    color: #ecf0f1;
+    border-bottom: 2px solid white;
+}
+
+.btn {
+    background-color: #2980b9;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #1f618d;
+}
+
+/* === HEADER SECTION === */
+.events-header {
+    background: linear-gradient(135deg, #eaf2f8 0%, #ffffff 100%);
+    padding: 4rem 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.events-header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.events-header p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* === EVENTS CONTAINER === */
+.events-container {
+    padding: 3rem 5%;
+}
+
+/* === CALENDAR WIDGET === */
+.calendar-widget {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.calendar-widget h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    color: #7f8c8d;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.days span {
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    font-size: 0.95rem;
+}
+
+.days span:hover {
+    background: #ecf0f1;
+}
+
+.days span.today {
+    background: #3498db;
+    color: white;
+}
+
+/* === UPCOMING EVENTS SECTION === */
+.upcoming-events {
+    margin-top: 3rem;
+}
+
+.upcoming-events h2 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.upcoming-events h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: #3498db;
+    border-radius: 2px;
+}
+
+.event-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.event-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.event-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.event-info {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-info h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.event-date,
+.event-location {
+    font-size: 0.95rem;
+    color: #7f8c8d;
+    margin: 0.25rem 0;
+}
+
+.event-info p {
+    font-size: 1rem;
+    color: #7f8c8d;
+    margin: 0.5rem 0 1rem;
+    flex-grow: 1;
+}
+
+.read-more {
+    background-color: #3498db;
+    color: white;
+    padding: 0.7rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: auto;
+    align-self: flex-start;
+    transition: all 0.3s ease;
+}
+
+.read-more:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* === ADD EVENT BUTTON === */
+.add-event-btn {
+    display: block;
+    margin: 3rem auto 0;
+    background-color: #3498db;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.add-event-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* === FOOTER === */
+.footer {
+    background-color: #3498db; /* Changed from #2c3e50 to match navbar */
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem 5%;
+    }
+
+    .navbar ul {
+        margin: 1rem 0;
+        gap: 1rem;
+    }
+
+    .events-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .events-header p {
+        font-size: 1rem;
+    }
+
+    .events-container {
+        padding: 2rem 5%;
+    }
+
+    .calendar-widget {
+        padding: 1.5rem;
+    }
+
+    .event-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .add-event-btn {
+        margin: 2rem auto 0;
+        padding: 0.7rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .events-header h1 {
+        font-size: 2rem;
+    }
+
+    .btn, .read-more, .add-event-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .event-info h2 {
+        font-size: 1.1rem;
+    }
+
+    .event-date,
+    .event-location {
+        font-size: 0.85rem;
+    }
+}

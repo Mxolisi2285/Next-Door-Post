@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit New Event</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; background-color:#f8f9fa;">
+
+<!-- Navbar -->
+<nav class="navbar" style="
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: #3498db;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+">
+    <a href="/" class="logo" style="
+        display: inline-block;
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid white;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    ">
+        <img th:src="@{/images/logo.png}" alt="Community Logo" style="width: 100%; height: 100%; object-fit: cover;" />
+    </a>
+    <ul style="display: flex; list-style: none; gap: 2rem; margin:0;">
+        <li><a th:href="@{/announcements}" style="color:white; text-decoration:none; font-weight:500;">News</a></li>
+        <li><a th:href="@{/events}" style="color:white; text-decoration:none; font-weight:500;">Events</a></li>
+        <li><a th:href="@{/gallery}" style="color:white; text-decoration:none; font-weight:500;">Gallery</a></li>
+    </ul>
+    <a th:href="@{/submit-announcement}" style="
+        background-color: #2980b9;
+        color: white;
+        padding: 0.7rem 1.5rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+    ">
+        Submit Announcement
+    </a>
+</nav>
+
+<!-- Main Section -->
+<div style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 2rem 1rem;
+">
+    <div style="
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        max-width: 600px;
+        width: 100%;
+        padding: 2rem;
+    ">
+        <h2 style="text-align:center; font-size:24px; margin-bottom:1.5rem; color:#2c3e50;">Submit a New Event</h2>
+
+        <!-- ✅ SUCCESS MESSAGE (only shown if successMessage exists) -->
+        <div th:if="${successMessage}" id="successMessage" style="
+            background-color: #2ecc71;
+            color: white;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 600;
+        ">
+            <span th:text="${successMessage}"></span>
+        </div>
+
+        <!-- ✅ FORM (only shown if NO success) -->
+        <div th:unless="${successMessage}">
+            <form th:action="@{/submit-event}"
+                  th:object="${event}"
+                  method="post"
+                  enctype="multipart/form-data"
+                  style="display:flex; flex-direction:column; gap:1rem;">
+
+                <div>
+                    <label for="title" style="display:block; margin-bottom:0.5rem; font-weight:600;">Event Title</label>
+                    <input type="text" id="title" name="title" placeholder="Enter event title" required style="
+                        width: 100%;
+                        padding: 0.6rem;
+                        border-radius: 6px;
+                        border: 1px solid #ccc;
+                        font-size: 1rem;
+                        outline: none;
+                    "/>
+                </div>
+
+                <div>
+                    <label for="date" style="display:block; margin-bottom:0.5rem; font-weight:600;">Date</label>
+                    <input type="date" id="date" name="date" required style="
+                        width: 100%;
+                        padding: 0.6rem;
+                        border-radius: 6px;
+                        border: 1px solid #ccc;
+                        font-size: 1rem;
+                        outline: none;
+                    "/>
+                </div>
+
+                <div>
+                    <label for="location" style="display:block; margin-bottom:0.5rem; font-weight:600;">Location</label>
+                    <input type="text" id="location" name="location" placeholder="Enter location" required style="
+                        width: 100%;
+                        padding: 0.6rem;
+                        border-radius: 6px;
+                        border: 1px solid #ccc;
+                        font-size: 1rem;
+                        outline: none;
+                    "/>
+                </div>
+
+                <div>
+                    <label for="description" style="display:block; margin-bottom:0.5rem; font-weight:600;">Description</label>
+                    <textarea id="description" name="description" placeholder="Brief event description" required style="
+                        width: 100%;
+                        padding: 0.6rem;
+                        border-radius: 6px;
+                        border: 1px solid #ccc;
+                        font-size: 1rem;
+                        min-height: 120px;
+                        resize: vertical;
+                        outline: none;
+                    "></textarea>
+                </div>
+
+                <div>
+                    <label for="image" style="display:block; margin-bottom:0.5rem; font-weight:600;">Upload Event Image</label>
+                    <input type="file" id="image" name="image" accept="image/*" style="display: block; width:100%; padding:0.3rem;"/>
+                </div>
+
+                <button type="submit" style="
+                    background-color: #3498db;
+                    color: white;
+                    padding: 0.8rem 2rem;
+                    border-radius: 8px;
+                    border: none;
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                    cursor: pointer;
+                ">
+                    Submit Event
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer (keep as-is) -->
+<footer style="..."> ... </footer>
+
+<!-- ✅ Auto-redirect after 4 seconds IF success -->
+<script th:if="${successMessage}">
+    setTimeout(function() {
+        window.location.href = '/events';
+    }, 4000);
+</script>
+
+</body>
+</html>
